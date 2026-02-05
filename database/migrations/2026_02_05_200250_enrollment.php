@@ -11,20 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sales', function (Blueprint $table) {
+        Schema::create('enrollments', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('user_id')
-                  ->constrained('users')
+            $table->foreignId('person_id')
+                  ->constrained('people')
                   ->onDelete('cascade');
 
-            $table->foreignId('machinery_id')
-                  ->constrained('machinery')
+            $table->foreignId('course_id')
+                  ->constrained('courses')
                   ->onDelete('cascade');
 
-            $table->date('date');
+            $table->date('enrollment_date');
 
-            $table->enum('type', ['sale', 'rent', 'service']);
+            // Evita que una persona se inscriba dos veces al mismo curso
+            $table->unique(['person_id', 'course_id']);
 
             $table->timestamps();
         });
@@ -35,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sales');
+        Schema::dropIfExists('enrollments');
     }
 };

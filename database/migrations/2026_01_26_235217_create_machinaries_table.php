@@ -11,8 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('enrollments', function (Blueprint $table) {
+        Schema::create('machinery', function (Blueprint $table) {
             $table->id();
+
+            $table->string('name', 100);
+            $table->string('model', 50);
+
+            $table->enum('status', ['available', 'in_use', 'maintenance'])
+                  ->default('available');
+
+            $table->string('serial_number', 100)->unique();
+
             $table->timestamps();
         });
     }
@@ -22,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('enrollments');
+        Schema::dropIfExists('machinery');
     }
 };

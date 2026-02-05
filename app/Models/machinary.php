@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class maquinary extends Model
+class machinary extends Model
 {
     //
 }
