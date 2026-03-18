@@ -6,16 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Person extends Model
+class machinery extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
+    protected $table = 'machinery';
+
     protected $fillable = [
         'name',
-        'lastname',
-        'rfc',
-        'tell',
-        'user_id'
+        'model',
+        'status',
+        'serial_number',
+        'image'
     ];
 }

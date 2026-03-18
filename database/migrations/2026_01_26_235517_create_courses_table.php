@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('name', 100);
-            $table->string('description', 255);
+            $table->string('description');
 
             $table->unsignedInteger('capacity');
 
@@ -23,6 +23,7 @@ return new class extends Migration
                   ->default('active');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

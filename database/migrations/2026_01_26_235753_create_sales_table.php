@@ -27,6 +27,7 @@ return new class extends Migration
             $table->enum('type', ['sale', 'rent', 'service']);
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

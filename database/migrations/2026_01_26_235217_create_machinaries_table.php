@@ -16,13 +16,11 @@ return new class extends Migration
 
             $table->string('name', 100);
             $table->string('model', 50);
-
             $table->enum('status', ['available', 'in_use', 'maintenance'])
                   ->default('available');
-
             $table->string('serial_number', 100)->unique();
-
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
